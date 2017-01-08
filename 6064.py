@@ -14,10 +14,16 @@ for _ in range(t):
     m, n, x, y = map(int, input().split())
     result = -1
     ma = lcm(m, n)
-    p = x
-    while p <= ma:
-        if p % n == y and p % m == x:
-            result = p
-            break
-        p += m
-    print(result) 
+    if m == x and n != y:
+        x = 0
+    if m != x and n == y:
+        y = 0
+    if m == x and n == y:
+        result = ma
+    else:
+        tmp = [x+m*i for i in range(ma//m+1) if x+m*i == ma or x+m*i % m == x]
+        for e in tmp:
+            if e % n == y and e % m == x:
+                result = e
+                break
+    print(result)
