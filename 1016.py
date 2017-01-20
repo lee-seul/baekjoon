@@ -4,6 +4,7 @@ mi, ma = map(int, input().split())
 
 numbers = [0 for _ in range(ma+1)]
 
+# 큰수 작은 수 빼고 더하고.
 i = 2
 while i ** 2 <= ma:
     idx = i ** 2
