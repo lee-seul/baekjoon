@@ -1,37 +1,36 @@
 # coding: utf-8
 
-from math import sqrt, ceil
-
 
 def find_primes(num):
     numbers = [0 for _ in range(num+1)]
     for i, e in enumerate(numbers):
         if i < 2:
             continue
-        if e == 0:
+        if  not e:
             n = 2
             while i*n <= num:
                 numbers[i*n] = 1
                 n += 1
-    primes = [i for i in range(2, num+1) if numbers[i]]
-    return primes 
+    primes = [i for i in range(2, num+1) if not numbers[i]]
+    return primes
 
 
 mi, ma = map(int, input().split())
 
 length = ma - mi + 1
-numbers = [0 for _ in range(length)]
+numbers = [0 for _ in range(length+1)]
+numbers[0] = 1
 
-primes = find_primes(ma)
+primes = find_primes(int(ma ** 0.5))
 
-i = 2
-while i ** 2 <= ma:
-    idx = i ** 2
-    if not numbers[idx]:
-        n = 1
-        while idx * n <= ma:
-            numbers[idx*n] = 1
-            n+= 1
-    i += 1
+for prime in primes:
+    for i, e in enumerate(numbers):
+        if not (mi + i - 1) % (prime ** 2) and not e:
+            n = 1
+            while i*n <= length:
+                numbers[i*n] = 1
+                n += 1
+            break
 
-print(numbers[1:].count(0))
+print(numbers.count(0))
+            
