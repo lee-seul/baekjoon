@@ -1,22 +1,24 @@
 # coding: utf-8
 
+def is_prime(number):
+    for i in range(2, int(number ** 0.5) + 1):
+        if not number % i:
+            return False
+    return True
+
 def count_sequence(num):
-    if num < 2:
+    if num < 2 or is_prime(num):
         return 0
     pre, nex = 0, 0
-    numbers = [0 for _ in range(1299710)]
-    for i in range(2, len(numbers)):
-        if not numbers[i]:
-            n = 2
-            if i >= num:
-                nex = i
-            if i <= num:
-                pre = i
-            if i >= num:
-                break
-            while i*n < 1299710:
-                numbers[n*i] = 1
-                n += 1
+    i = 1
+    while True:
+        if not pre and is_prime(num-i):
+            pre = num - i
+        if not nex and is_prime(num+i):
+            nex = num + i
+        if pre and nex:
+            break
+        i += 1
     return nex - pre
 
 
