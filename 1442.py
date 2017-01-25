@@ -3,6 +3,7 @@
 def is_awesome(num):
     result = "" 
     for i in range(30, -1, -1):    
+        print(i)
         if num >= 2 ** i:
             num -= 2 ** i
             result += "1"
