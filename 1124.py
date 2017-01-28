@@ -1,40 +1,35 @@
 # coding: utf-8
 
+from math import log
 
 a, b = map(int, input().split())
 
+primes = []
 numbers = [0 for i in range(b+1)]
 for i in range(2, b+1):
     if not numbers[i]:
         n = 2
+        primes.append(i)
         while i*n <= b:
-            numbers[i*n] = 1
+            print(i, numbers)
+            if not n % i:
+                if log(n, i) == int(log(n, i)):
+                    x = log(i*n, i)
+                else:
+                    x = numbers[n]
+            else:
+                x = 1
+            print(x)
+            numbers[i*n] += x
             n += 1
 
-# primes = [i for i in range(2, b+1) if not numbers[i]]
-# tests = [i for i in range(a, b+1) if numbers[i]]
-primes = []
-tests = []
-for i in range(2, b+1):
-    if numbers[i]:
-        tests.append(i)
-    else:
-        primes.append(i)
 
 result = 0
-for i in tests:
-    print(i)
-    cnt = 0
-    j = 0
-    n = i
-    while n != 1:
-        if not n % primes[j]:
-            cnt += 1
-            n /= primes[j]
-        else:
-            j += 1
-    if cnt in primes:
+for i in range(2, len(numbers)):
+    print(i, numbers[i])
+    idx = int(numbers[i])
+    if not numbers[idx] and idx >= 2:
         result += 1
 
 print(result)
-            
+
