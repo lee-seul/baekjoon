@@ -4,31 +4,21 @@ from math import log
 
 a, b = map(int, input().split())
 
-primes = []
 numbers = [0 for i in range(b+1)]
 for i in range(2, b+1):
-    if not numbers[i]:
+    if numbers[i] <= 0:
         n = 2
-        primes.append(i)
         while i*n <= b:
-            print(i, numbers)
-            if not n % i:
-                if log(n, i) == int(log(n, i)):
-                    x = log(i*n, i)
-                else:
-                    x = numbers[n]
-            else:
-                x = 1
-            print(x)
-            numbers[i*n] += x
+            x = i * n
+            while not x % i:
+                numbers[i*n] += 1
+                x /= i
             n += 1
 
-
 result = 0
-for i in range(2, len(numbers)):
-    print(i, numbers[i])
-    idx = int(numbers[i])
-    if not numbers[idx] and idx >= 2:
+for i in range(a, len(numbers)):
+    idx = numbers[i]
+    if idx >= 2 and not numbers[idx]:
         result += 1
 
 print(result)
