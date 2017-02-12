@@ -29,18 +29,30 @@ def c10_to_36(num):
         num -= v * (n-1)
     return result
 
-def sort_list(l, max_length):
-    result = []
-    for i in range(max_length, -1, -1):
-        temp = []
+def solution(l, max_length, loop):
+    result = 0
+    temp = []
+    cnt = 0
+    not_finish = True
+    while not_finish:
         for e in l:
-            if len(e) == i:
-                temp.append(e)
+            if len(e) == max_length:
+                temp.append(e.pop(0))
         temp.sort()
-        if temp:
-            result += temp
-    return result
-
+        for i in range(len(temp)):
+            result += 35 * (36 ** (max_length - 1))
+            cnt += 1
+            if cnt == loop:
+                not_finish = False
+                if temp:
+                    for a in temp:
+                        result += values[a] * (36 ** (max_length - 1))
+                break
+        max_length -= 1
+    
+    for e in l:
+        result += c36_to_10("".join(e))
+    return c10_to_36(result) 
 
 n = int(input())
 numbers = []
@@ -53,28 +65,5 @@ for _ in range(n):
 
 k = int(input())
 
-numbers = sort_list(numbers, max(leng))
-
-cnt = 0
-i = 0
-j = 0
-while True:
-    numbers[i][j] = "Z"
-    cnt += 1
-    if cnt == k:
-        break
-    i += 1
-    if len(numbers) == i:
-        i = 0
-        j += 1
-        numbers.sort()
-
-result = 0
-for i in range(len(numbers)):
-    result += c36_to_10("".join(numbers[i]))
-    print("".join(numbers[i]))
-
-print(c10_to_36(result))
-
-
+print(solution(numbers, max(leng), k))
 
