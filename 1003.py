@@ -1,5 +1,8 @@
 # coding: utf-8
 
+from pudb import set_trace
+set_trace()
+
 n = int(input())
 l = []
 for _ in range(n):
