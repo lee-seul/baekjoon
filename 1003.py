@@ -1,12 +1,10 @@
 # coding: utf-8
 
-from pudb import set_trace
-set_trace()
-
 n = int(input())
-l = []
+values = []
 for _ in range(n):
-    l.append(int(input()))
+    value = int(input())
+    values.append(value)
 
 def fibonacci(n):
     a, b = 1, 0
