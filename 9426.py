@@ -6,14 +6,14 @@ read = sys.stdin.readline
 
 
 def selection_sort(l):
-    for i in range(1, len(l)):
-        temp = l[i]
-        for j in range(i-1, -1, -1):
-            if l[j] > temp:
-                l[j+1] = l[j]
-            else:
-                l[j+1] = temp
-                break
+    for i in range(len(l)-1):
+        idx = i
+        for j in range(i+1, len(l)):
+            if l[j] < l[idx]:
+                idx = j
+        temp = l[idx]
+        l[idx] = l[i]
+        l[i] = temp
     return l
 
 
@@ -24,9 +24,13 @@ seq = [0 for i in range(n+1)]
 for i in range(n):
     seq[i] = int(read())
 
-seq = selection_sort(seq)
-start = (k+1)//2
-end = start + n-k+1
+result = 0
+idx = (k+1)//2 - 1
 
-print(sum(seq[start:end]))
+for i in range(k, n+1):
+    sub_seq = seq[i-k:i]
+    sub_seq = selection_sort(sub_seq)
+    result += sub_seq[idx]
 
+
+print(result)
