@@ -6,9 +6,7 @@ def tower_of_hanoi(n, frompeg, topeg, auxpeg):
         print("{} {}".format(frompeg, topeg))
         return
     tower_of_hanoi(n-1, frompeg, auxpeg, topeg)
-    
     print("{} {}".format(frompeg, topeg))
-    
     tower_of_hanoi(n-1, auxpeg, topeg, frompeg)
 
 
