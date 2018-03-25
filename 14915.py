@@ -2,15 +2,21 @@
 
 from math import log
 
-m, n = list(map(int, input().split()))
 
-if m != 0:
-    max_digit = int(log(m, n))
-    digits = list(range(max_digit + 1))
+def get_max_digit(m, n):
+    return int(log(m, n))
 
-    digits.reverse()
 
-    numbers = {n:chr(55+n) for n in range(10, 16)}
+def max_digit(m, n):
+    digits = get_max_digit(m, n)
+
+    result = list(range(digits + 1))
+    result.reverse()
+    return result
+
+
+def solution(m, digits):
+    numbers = {x:chr(55+n) for x in range(10, 16)}
 
     result = ''
     for digit in digits:
@@ -31,8 +37,22 @@ if m != 0:
                 temp = '0' * digit
                 result += temp
             break
-else:
-    result = '0'
 
-print(result)
+    return result
+
+
+def get_solution(m, n):
+    if m == 0:
+        print('0')
+        return
+
+    digits = max_digit(m, n)
+
+    result = solution(m, digits)
+    print (result)
+
+
+m, n = list(map(int, input().split()))
+
+get_solution(m, n)
 
