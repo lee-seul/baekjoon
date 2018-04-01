@@ -22,15 +22,17 @@ def name_to_num(name):
 
 
 def solution(numbers):
-    length = len(numbers)
-    if length == 2:
-        return numbers
-    result = []
-    for i in range(length-1):
-        temp = numbers[i] + numbers[i+1]
-        temp %= 10
-        result.append(temp)
-    return solution(result)
+    while True:
+        length = len(numbers)
+        if length == 2:
+            return numbers        
+    
+        result = []
+        for i in range(length-1):
+            temp = numbers[i] + numbers[i+1]
+            temp %= 10
+            result.append(temp)
+        numbers = result
 
 A = input()
 B = input()
