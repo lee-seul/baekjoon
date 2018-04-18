@@ -1,7 +1,10 @@
 # coding: utf-8
 
+import sys
+
+
 while True:
-    line = input() 
+    line = sys.stdin.readline().strip()
     if not line:
         break
     a, b = map(int, line.split())
