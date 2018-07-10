@@ -3,12 +3,13 @@
 
 def round_num(num):
     length = len(num)
-    num = int(num)
     if length == 1:
-        return num
-    for i in range(length):
-        print(num, i)
-        num = round(num, -i)
+        return int(num)
+    for i in range(1, length):
+        if int(num[-i]) == 5:
+            num = str(int(num) + 10 ** (i-1)) 
+        num = round(int(num), -i)
+        num = str(num)
     return num
 
 
