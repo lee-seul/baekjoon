@@ -42,6 +42,10 @@ for _ in range(5):
 
 FOUND = False
 for i, num in enumerate(call_number):
+    if FOUND:
+        print(i)
+        break
+
     for j in range(5):
         if right[j] == num:
             right[j] = -1
@@ -54,10 +58,4 @@ for i, num in enumerate(call_number):
 
             if check_bingo(matrix, left, right):
                 FOUND = True
-                print(i+1)
                 break
-        if FOUND:
-            break
-    if FOUND:
-        break 
-
