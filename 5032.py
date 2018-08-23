@@ -3,11 +3,10 @@
 
 e, f, c = map(int, input().split())
 
-count = (e + f) // c
-share = count
-remains = (e + f) % c
 
-
+count = 0
+remains = 0
+share = e + f
 while True:
     remains += share
     if remains < c:
