@@ -12,5 +12,7 @@ while True:
             if char == ' ' and idx <= i:
                 idx = i
                 break
+            if i == len(string) - 1 and len(string) > idx:
+                idx = len(string)
     print(idx+1)
             
