@@ -18,7 +18,6 @@ string = input()
 value = 0
 for char in string:
     value += chars[char]
-print(value)
 
 if is_prime(value):
     print('It is a prime word.')
