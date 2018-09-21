@@ -21,7 +21,7 @@ for char in string:
 print(value)
 
 if is_prime(value):
-    print('It is a prime word')
+    print('It is a prime word.')
 else:
     print('It is not a prime word.')
 
