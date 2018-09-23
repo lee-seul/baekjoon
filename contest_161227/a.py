@@ -3,11 +3,13 @@
 def is_onedigit(num):
     return len(str(num)) == 1
 
+
 def make_onedigit(num):
     while not is_onedigit(num): 
         num = str(num)
         num = sum(list(map(int, num)))
     return num
+
 
 while True:
     n = int(input())
