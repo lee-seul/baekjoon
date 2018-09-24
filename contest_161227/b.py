@@ -1,7 +1,9 @@
 # coding: utf-8
 
+
 n, m = map(int, input().split())
 result = []
+
 for _ in range(n):
     temp = list(input())
     temp.reverse()
