@@ -1,8 +1,7 @@
 # coding: utf-8
 
 
-t = int(input())
-for _ in range(t):
+def solution():
     k = int(input())
     students = [int(x) for x in input().split()]
     n = int(input())
@@ -16,6 +15,12 @@ for _ in range(t):
             su.append((num, time))
 
     su = sorted(su, key=lambda x: x[1])
-    print(su[0][0], len(su))
+    return su[0][0], len(su)
                 
-                
+
+if __name__ == '__main__':
+    t = int(input())
+    for _ in range(t):
+        a, b = solution()
+        print(a, b)
+
